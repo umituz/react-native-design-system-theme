@@ -9,7 +9,7 @@
  * @module TokenFactory
  */
 
-import { BASE_TOKENS } from './BaseTokens';
+import { BASE_TOKENS } from '@umituz/react-native-design-system';
 import { getColorPalette, withAlpha, type ThemeMode, type ColorPalette } from './ColorPalette';
 
 // =============================================================================
