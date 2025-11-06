@@ -56,4 +56,24 @@ export {
 
 export { useAppDesignTokens } from './hooks/useAppDesignTokens';
 export { useDesignSystemTheme } from './infrastructure/globalThemeStore';
+export { useTheme } from './infrastructure/stores/themeStore';
+export { useThemedStyles, useThemedStyleSheet } from './hooks/useThemedStyles';
+
+// =============================================================================
+// THEME OBJECTS
+// =============================================================================
+
+export {
+  lightTheme,
+  darkTheme,
+  createResponsiveValue,
+  type Theme,
+  type ExtendedColorPalette,
+} from './core/themes';
+
+// =============================================================================
+// STORAGE
+// =============================================================================
+
+export { ThemeStorage } from './infrastructure/storage/ThemeStorage';
 
