@@ -38,6 +38,7 @@ export {
   type IconSizes,
   type Opacity,
   type AvatarSizes,
+  type ComponentSizes,
 } from './core/BaseTokens';
 
 // =============================================================================
