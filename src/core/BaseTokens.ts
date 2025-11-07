@@ -125,6 +125,23 @@ export type AvatarSizes = {
   xxl: number;
 };
 
+export type ComponentSizes = {
+  touchTarget: number;
+  progressBar: {
+    normal: number;
+    thick: number;
+  };
+  dot: {
+    active: number;
+    inactive: number;
+  };
+  buttonHeight: {
+    sm: number;
+    md: number;
+    lg: number;
+  };
+};
+
 export type BaseTokens = {
   spacing: Spacing;
   typography: Typography;
@@ -132,6 +149,7 @@ export type BaseTokens = {
   iconSizes: IconSizes;
   opacity: Opacity;
   avatarSizes: AvatarSizes;
+  sizes: ComponentSizes;
 };
 
 // =============================================================================
@@ -369,6 +387,23 @@ export const BASE_TOKENS: BaseTokens = {
     lg: 48,
     xl: 64,
     xxl: 80,
+  },
+
+  sizes: {
+    touchTarget: 44, // Minimum touch target size (iOS/Android guidelines)
+    progressBar: {
+      normal: 4,
+      thick: 8,
+    },
+    dot: {
+      active: 12,
+      inactive: 8,
+    },
+    buttonHeight: {
+      sm: 40,
+      md: 48,
+      lg: 56,
+    },
   },
 };
 
