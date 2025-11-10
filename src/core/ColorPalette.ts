@@ -169,6 +169,13 @@ export const lightColors = {
   cardBackground: '#FFFFFF',
 
   // =============================================================================
+  // COLOR ALIASES (for backward compatibility and convenience)
+  // =============================================================================
+  text: '#1E293B',                    // Alias for textPrimary
+  background: '#FFFFFF',              // Alias for backgroundPrimary
+  card: '#FFFFFF',                    // Alias for cardBackground
+
+  // =============================================================================
   // SPECIAL COLORS
   // =============================================================================
   transparent: 'transparent',
@@ -340,6 +347,13 @@ export const darkColors = {
   inputBorder: '#475569',            // Subtle input border
 
   cardBackground: '#1E293B',         // Dark card background
+
+  // =============================================================================
+  // COLOR ALIASES (for backward compatibility and convenience)
+  // =============================================================================
+  text: '#F1F5F9',                    // Alias for textPrimary
+  background: '#0F172A',              // Alias for backgroundPrimary
+  card: '#1E293B',                    // Alias for cardBackground
 
   // =============================================================================
   // SPECIAL COLORS
