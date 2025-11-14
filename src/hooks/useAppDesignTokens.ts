@@ -65,16 +65,19 @@ const createTokensWithFallback = (mode: string | undefined | null): DesignTokens
 const FALLBACK_TOKENS = createDesignTokens('light');
 
 export const useAppDesignTokens = (): DesignTokens => {
-  const { themeMode } = useDesignSystemTheme();
+  // Safely get themeMode with fallback - useDesignSystemTheme always returns an object
+  const themeStore = useDesignSystemTheme();
+  const themeMode = themeStore?.themeMode || 'light';
   
   // Memoized tokens creation with validation (DRY + KISS)
   // Always returns valid tokens - never undefined
-  return useMemo(() => {
+  // CRITICAL: This hook MUST always return a valid DesignTokens object
+  const tokens = useMemo(() => {
     try {
-      const tokens = createTokensWithFallback(themeMode);
+      const result = createTokensWithFallback(themeMode);
       // Double-check: ensure tokens are valid before returning
-      if (isValidDesignTokens(tokens)) {
-        return tokens;
+      if (isValidDesignTokens(result)) {
+        return result;
       }
       /* eslint-disable-next-line no-console */
       if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens, using fallback');
@@ -85,5 +88,14 @@ export const useAppDesignTokens = (): DesignTokens => {
       return FALLBACK_TOKENS;
     }
   }, [themeMode]);
+  
+  // Final safety check: ensure we never return undefined
+  if (!tokens || !isValidDesignTokens(tokens)) {
+    /* eslint-disable-next-line no-console */
+    if (__DEV__) console.error('[useAppDesignTokens] CRITICAL: Tokens are invalid, returning fallback');
+    return FALLBACK_TOKENS;
+  }
+  
+  return tokens;
 };
 
