@@ -33,69 +33,14 @@
 import { useMemo } from 'react';
 import { createDesignTokens, type DesignTokens } from '../core/TokenFactory';
 import { useDesignSystemTheme } from '../infrastructure/globalThemeStore';
-import { isValidDesignTokens, getValidThemeMode } from '../core/utils/tokenValidator';
-
-/**
- * Creates design tokens with fallback handling
- * 
- * @param mode - Theme mode
- * @returns Design tokens or fallback tokens
- */
-const createTokensWithFallback = (mode: string | undefined | null): DesignTokens => {
-  const validMode = getValidThemeMode(mode);
-  
-  try {
-    const tokens = createDesignTokens(validMode);
-    
-    if (!isValidDesignTokens(tokens)) {
-      /* eslint-disable-next-line no-console */
-      if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens returned, using fallback');
-      return createDesignTokens('light');
-    }
-    
-    return tokens;
-  } catch (error) {
-    /* eslint-disable-next-line no-console */
-    if (__DEV__) console.error('[useAppDesignTokens] Error creating tokens:', error);
-    return createDesignTokens('light');
-  }
-};
-
-// Fallback tokens - created once to avoid recreation
-const FALLBACK_TOKENS = createDesignTokens('light');
 
 export const useAppDesignTokens = (): DesignTokens => {
-  // Safely get themeMode with fallback - useDesignSystemTheme always returns an object
-  const themeStore = useDesignSystemTheme();
-  const themeMode = themeStore?.themeMode || 'light';
+  const { themeMode } = useDesignSystemTheme();
   
-  // Memoized tokens creation with validation (DRY + KISS)
-  // Always returns valid tokens - never undefined
-  // CRITICAL: This hook MUST always return a valid DesignTokens object
-  const tokens = useMemo(() => {
-    try {
-      const result = createTokensWithFallback(themeMode);
-      // Double-check: ensure tokens are valid before returning
-      if (isValidDesignTokens(result)) {
-        return result;
-      }
-      /* eslint-disable-next-line no-console */
-      if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens, using fallback');
-      return FALLBACK_TOKENS;
-    } catch (error) {
-      /* eslint-disable-next-line no-console */
-      if (__DEV__) console.error('[useAppDesignTokens] Error in useMemo:', error);
-      return FALLBACK_TOKENS;
-    }
+  // Always return valid tokens - ensure themeMode is valid
+  return useMemo(() => {
+    const mode = themeMode || 'light';
+    return createDesignTokens(mode);
   }, [themeMode]);
-  
-  // Final safety check: ensure we never return undefined
-  if (!tokens || !isValidDesignTokens(tokens)) {
-    /* eslint-disable-next-line no-console */
-    if (__DEV__) console.error('[useAppDesignTokens] CRITICAL: Tokens are invalid, returning fallback');
-    return FALLBACK_TOKENS;
-  }
-  
-  return tokens;
 };
 
