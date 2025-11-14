@@ -60,13 +60,18 @@ export const useTheme = create<ThemeState>((set, get) => ({
         // Sync with design system global theme
         useDesignSystemTheme.getState().setThemeMode(savedMode);
       } else {
+        // No saved mode - use default 'light' and sync to design system store
         set({ isInitialized: true });
+        // Ensure design system store is synced even if no saved mode exists
+        useDesignSystemTheme.getState().setThemeMode('light');
       }
     } catch (error) {
       /* eslint-disable-next-line no-console */
       if (__DEV__) console.error('[ThemeStore] Initialization error:', error);
       // Silent failure - still mark as initialized to prevent blocking
       set({ isInitialized: true });
+      // Ensure design system store is synced even on error
+      useDesignSystemTheme.getState().setThemeMode('light');
     }
   },
 
