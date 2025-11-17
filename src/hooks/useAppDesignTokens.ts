@@ -33,32 +33,80 @@
 import { useMemo } from 'react';
 import { createDesignTokens, type DesignTokens } from '../core/TokenFactory';
 import { useDesignSystemTheme } from '../infrastructure/globalThemeStore';
+import { BASE_TOKENS } from '../core/BaseTokens';
+import { getColorPalette } from '../core/ColorPalette';
+
+/**
+ * Create fallback tokens - always returns valid tokens
+ * Used when createDesignTokens fails or returns undefined
+ */
+const createFallbackTokens = (): DesignTokens => {
+  const colors = getColorPalette('light');
+  return {
+    colors,
+    spacing: BASE_TOKENS.spacing,
+    typography: BASE_TOKENS.typography,
+    iconSizes: BASE_TOKENS.iconSizes,
+    opacity: BASE_TOKENS.opacity,
+    avatarSizes: BASE_TOKENS.avatarSizes,
+    borders: {
+      ...BASE_TOKENS.borders,
+      card: {
+        ...BASE_TOKENS.borders.card,
+        borderColor: colors.border,
+      },
+      input: {
+        ...BASE_TOKENS.borders.input,
+        borderColor: colors.border,
+      },
+    },
+  };
+};
 
 export const useAppDesignTokens = (): DesignTokens => {
-  const globalTheme = useDesignSystemTheme();
-  
-  // Safely get themeMode with fallback
-  const themeMode = globalTheme?.themeMode || 'light';
+  // Safely get global theme store - hook always returns an object
+  let themeMode: 'light' | 'dark' = 'light';
+  try {
+    const globalTheme = useDesignSystemTheme();
+    themeMode = globalTheme.themeMode || 'light';
+  } catch (error) {
+    /* eslint-disable-next-line no-console */
+    if (__DEV__) console.warn('[useAppDesignTokens] Failed to get global theme, using light theme');
+    themeMode = 'light';
+  }
   
   // Always return valid tokens - ensure themeMode is valid
   return useMemo(() => {
     try {
-      const mode = themeMode || 'light';
+      // Validate themeMode
+      const mode = (themeMode === 'light' || themeMode === 'dark') ? themeMode : 'light';
+      
+      // Create tokens
       const tokens = createDesignTokens(mode);
       
-      // Validate tokens structure
-      if (!tokens || !tokens.spacing || !tokens.colors) {
+      // Validate tokens structure - must have all required properties
+      if (
+        !tokens ||
+        typeof tokens !== 'object' ||
+        !tokens.spacing ||
+        !tokens.colors ||
+        !tokens.typography ||
+        !tokens.iconSizes ||
+        !tokens.opacity ||
+        !tokens.avatarSizes ||
+        !tokens.borders
+      ) {
         /* eslint-disable-next-line no-console */
-        if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens, using light theme fallback');
-        return createDesignTokens('light');
+        if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens structure, using fallback');
+        return createFallbackTokens();
       }
       
       return tokens;
     } catch (error) {
       /* eslint-disable-next-line no-console */
       if (__DEV__) console.error('[useAppDesignTokens] Error creating tokens:', error);
-      // Return light theme tokens as fallback
-      return createDesignTokens('light');
+      // Return fallback tokens
+      return createFallbackTokens();
     }
   }, [themeMode]);
 };
