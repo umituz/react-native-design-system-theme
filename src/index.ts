@@ -56,10 +56,10 @@ export {
 // =============================================================================
 
 export { useAppDesignTokens } from './hooks/useAppDesignTokens';
-export { useCommonStyles } from './hooks/useCommonStyles';
 export { useDesignSystemTheme } from './infrastructure/globalThemeStore';
 export { useTheme } from './infrastructure/stores/themeStore';
 export { useThemedStyles, useThemedStyleSheet } from './hooks/useThemedStyles';
+export { useCommonStyles } from './hooks/useCommonStyles';
 
 // =============================================================================
 // THEME OBJECTS
