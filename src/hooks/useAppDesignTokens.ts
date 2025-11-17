@@ -33,14 +33,34 @@
 import { useMemo } from 'react';
 import { createDesignTokens, type DesignTokens } from '../core/TokenFactory';
 import { useDesignSystemTheme } from '../infrastructure/globalThemeStore';
+import { STATIC_DESIGN_TOKENS } from '../core/TokenFactory';
 
 export const useAppDesignTokens = (): DesignTokens => {
-  const { themeMode } = useDesignSystemTheme();
+  const globalTheme = useDesignSystemTheme();
+  
+  // Safely get themeMode with fallback
+  const themeMode = globalTheme?.themeMode || 'light';
   
   // Always return valid tokens - ensure themeMode is valid
   return useMemo(() => {
-    const mode = themeMode || 'light';
-    return createDesignTokens(mode);
+    try {
+      const mode = themeMode || 'light';
+      const tokens = createDesignTokens(mode);
+      
+      // Validate tokens structure
+      if (!tokens || !tokens.spacing || !tokens.colors) {
+        /* eslint-disable-next-line no-console */
+        if (__DEV__) console.warn('[useAppDesignTokens] Invalid tokens, using fallback');
+        return STATIC_DESIGN_TOKENS;
+      }
+      
+      return tokens;
+    } catch (error) {
+      /* eslint-disable-next-line no-console */
+      if (__DEV__) console.error('[useAppDesignTokens] Error creating tokens:', error);
+      // Return static tokens as fallback
+      return STATIC_DESIGN_TOKENS;
+    }
   }, [themeMode]);
 };
 
