@@ -27,13 +27,20 @@
 
 import { create } from 'zustand';
 import type { ThemeMode } from '../core/ColorPalette';
+import type { CustomThemeColors } from '../core/CustomColors';
 
 interface GlobalThemeStore {
   /** Current theme mode */
   themeMode: ThemeMode;
 
+  /** Custom theme colors override */
+  customColors?: CustomThemeColors;
+
   /** Update theme mode (called by app when theme changes) */
   setThemeMode: (mode: ThemeMode) => void;
+
+  /** Set custom theme colors (called by app when custom colors change) */
+  setCustomColors: (colors?: CustomThemeColors) => void;
 }
 
 /**
@@ -44,12 +51,16 @@ interface GlobalThemeStore {
  */
 export const useDesignSystemTheme = create<GlobalThemeStore>((set, get) => ({
   themeMode: 'light',
+  customColors: undefined,
   setThemeMode: (mode: ThemeMode) => {
     // Only update if mode actually changed to prevent unnecessary re-renders
     const currentMode = get().themeMode;
     if (currentMode !== mode) {
       set({ themeMode: mode });
     }
+  },
+  setCustomColors: (colors?: CustomThemeColors) => {
+    set({ customColors: colors });
   },
 }));
 

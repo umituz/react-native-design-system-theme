@@ -21,6 +21,11 @@ export {
   type ThemeMode,
 } from './core/ColorPalette';
 
+export {
+  applyCustomColors,
+  type CustomThemeColors,
+} from './core/CustomColors';
+
 // =============================================================================
 // BASE TOKENS - Static Design Tokens
 // =============================================================================

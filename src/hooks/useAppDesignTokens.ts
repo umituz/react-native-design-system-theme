@@ -35,11 +35,11 @@ import { createDesignTokens, type DesignTokens } from '../core/TokenFactory';
 import { useDesignSystemTheme } from '../infrastructure/globalThemeStore';
 
 export const useAppDesignTokens = (): DesignTokens => {
-  const { themeMode } = useDesignSystemTheme();
+  const { themeMode, customColors } = useDesignSystemTheme();
   
   return useMemo(() => {
     const mode = themeMode === 'dark' ? 'dark' : 'light';
-    return createDesignTokens(mode);
-  }, [themeMode]);
+    return createDesignTokens(mode, customColors);
+  }, [themeMode, customColors]);
 };
 
