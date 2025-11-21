@@ -68,19 +68,19 @@ export interface Theme {
 export const lightTheme: Theme = {
   colors: {
     ...lightColors,
-    // Settings gradients (optional - apps can override)
+    // Settings gradients - Warm Orange Harmony
     settingGradients: {
-      language: ['#667eea', '#764ba2'],
-      themeLight: ['#f093fb', '#f5576c'],
-      themeDark: ['#4facfe', '#00f2fe'],
-      sound: ['#a8edea', '#fed6e3'],
-      breathing: ['#d299c2', '#fef9d7'],
-      achievements: ['#ffecd2', '#fcb69f'],
-      delete: ['#fbc2eb', '#a6c1ee'],
-      info: ['#a1c4fd', '#c2e9fb'],
-      heart: ['#ff9a9e', '#fad0c4'],
-      refresh: ['#FCD34D', '#F59E0B'],
-      notifications: ['#3b82f6', '#8b5cf6'],
+      language: ['#FF8C42', '#FFB88C'],
+      themeLight: ['#FFB88C', '#FFE4CD'],
+      themeDark: ['#FF6B35', '#FF8C42'],
+      sound: ['#FFA07A', '#FFB6C1'],
+      breathing: ['#FFCC99', '#FFE4B5'],
+      achievements: ['#FFB347', '#FFD700'],
+      delete: ['#FF6347', '#FF8C69'],
+      info: ['#FF8C42', '#FFA07A'],
+      heart: ['#FFB6C1', '#FFA07A'],
+      refresh: ['#FFB347', '#FF8C42'],
+      notifications: ['#FF6B35', '#FFB88C'],
     },
   },
   spacing: BASE_TOKENS.spacing,
@@ -125,19 +125,19 @@ export const darkTheme: Theme = {
   ...lightTheme,
   colors: {
     ...darkColors,
-    // Settings gradients (same as light theme - looks good in both)
+    // Settings gradients - Warm Orange Harmony (Dark Mode)
     settingGradients: {
-      language: ['#667eea', '#764ba2'],
-      themeLight: ['#f093fb', '#f5576c'],
-      themeDark: ['#4facfe', '#00f2fe'],
-      sound: ['#a8edea', '#fed6e3'],
-      breathing: ['#d299c2', '#fef9d7'],
-      achievements: ['#ffecd2', '#fcb69f'],
-      delete: ['#fbc2eb', '#a6c1ee'],
-      info: ['#a1c4fd', '#c2e9fb'],
-      heart: ['#ff9a9e', '#fad0c4'],
-      refresh: ['#FCD34D', '#F59E0B'],
-      notifications: ['#3b82f6', '#8b5cf6'],
+      language: ['#FF8C42', '#FFB88C'],
+      themeLight: ['#FFB88C', '#FFE4CD'],
+      themeDark: ['#FF6B35', '#FF8C42'],
+      sound: ['#FFA07A', '#FFB6C1'],
+      breathing: ['#FFCC99', '#FFE4B5'],
+      achievements: ['#FFB347', '#FFD700'],
+      delete: ['#FF6347', '#FF8C69'],
+      info: ['#FF8C42', '#FFA07A'],
+      heart: ['#FFB6C1', '#FFA07A'],
+      refresh: ['#FFB347', '#FF8C42'],
+      notifications: ['#FF6B35', '#FFB88C'],
     },
   },
 } as const;

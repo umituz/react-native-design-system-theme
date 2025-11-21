@@ -41,19 +41,19 @@ export const withAlpha = (hexColor: string, alpha: number): string => {
 
 export const lightColors = {
   // =============================================================================
-  // PRIMARY BRAND COLORS
+  // PRIMARY BRAND COLORS - Warm Orange & Harmony Bloom
   // =============================================================================
-  primary: '#3B82F6',
-  primaryLight: '#60A5FA',
-  primaryDark: '#2563EB',
+  primary: '#FF6B35',          // Vibrant Orange
+  primaryLight: '#FF8C42',     // Warm Orange
+  primaryDark: '#FF4500',      // Orange Red
 
-  secondary: '#8B5CF6',
-  secondaryLight: '#A78BFA',
-  secondaryDark: '#7C3AED',
+  secondary: '#FFB88C',        // Soft Peach
+  secondaryLight: '#FFCC99',   // Light Peach
+  secondaryDark: '#FF8C69',    // Salmon
 
-  accent: '#F59E0B',
-  accentLight: '#FBBF24',
-  accentDark: '#D97706',
+  accent: '#FFB6C1',           // Light Pink (Bloom)
+  accentLight: '#FFA07A',      // Light Salmon
+  accentDark: '#FF8C69',       // Salmon
 
   // =============================================================================
   // MATERIAL DESIGN 3 - ON COLORS (Text on colored backgrounds)
@@ -71,10 +71,10 @@ export const lightColors = {
   // =============================================================================
   // MATERIAL DESIGN 3 - CONTAINER COLORS (Lighter versions for containers)
   // =============================================================================
-  primaryContainer: '#DBEAFE',    // Light container using primary
-  onPrimaryContainer: '#1E40AF',  // Text on primary container
-  secondaryContainer: '#E0E7FF',  // Light container using secondary
-  onSecondaryContainer: '#3730A3', // Text on secondary container
+  primaryContainer: '#FFE4CD',    // Light orange container
+  onPrimaryContainer: '#CC4A1F',  // Text on primary container
+  secondaryContainer: '#FFF8DC',  // Light peach container
+  onSecondaryContainer: '#CC8C5F', // Text on secondary container
   errorContainer: '#FEE2E2',      // Light container using error
   onErrorContainer: '#991B1B',    // Text on error container
 
@@ -100,9 +100,9 @@ export const lightColors = {
   warningLight: '#FBBF24',
   warningDark: '#D97706',
 
-  info: '#3B82F6',
-  infoLight: '#60A5FA',
-  infoDark: '#2563EB',
+  info: '#FF8C42',              // Warm Orange for info
+  infoLight: '#FFA07A',         // Light Salmon
+  infoDark: '#FF6347',          // Tomato
 
   // =============================================================================
   // SEMANTIC CONTAINER COLORS (Light mode)
@@ -111,8 +111,8 @@ export const lightColors = {
   onSuccessContainer: '#065F46',      // Text on success container
   warningContainer: '#FEF3C7',        // Light container for warning states
   onWarningContainer: '#92400E',      // Text on warning container
-  infoContainer: '#DBEAFE',           // Light container for info states
-  onInfoContainer: '#1E40AF',         // Text on info container
+  infoContainer: '#FFE4CD',           // Light orange container for info states
+  onInfoContainer: '#CC4A1F',         // Text on info container
 
   // =============================================================================
   // GRAYSCALE PALETTE
@@ -160,8 +160,8 @@ export const lightColors = {
   // =============================================================================
   // COMPONENT-SPECIFIC COLORS
   // =============================================================================
-  buttonPrimary: '#3B82F6',
-  buttonSecondary: '#8B5CF6',
+  buttonPrimary: '#FF6B35',        // Vibrant Orange
+  buttonSecondary: '#FFB88C',      // Soft Peach
 
   inputBackground: '#FFFFFF',
   inputBorder: '#E2E8F0',
@@ -198,7 +198,7 @@ export const lightColors = {
   textWhiteOpacity: 'rgba(255, 255, 255, 0.8)',
 
   errorBackground: 'rgba(239, 68, 68, 0.1)',
-  primaryBackground: 'rgba(99, 102, 241, 0.1)',
+  primaryBackground: 'rgba(255, 107, 53, 0.1)',  // Orange background
 
   cardOverlay: 'rgba(0, 0, 0, 0.15)',
 
@@ -210,9 +210,9 @@ export const lightColors = {
   // =============================================================================
 
   // =============================================================================
-  // GRADIENTS
+  // GRADIENTS - Warm Orange Harmony
   // =============================================================================
-  gradient: ['#3B82F6', '#8B5CF6'],
+  gradient: ['#FF6B35', '#FFB88C'],  // Orange to Peach gradient
 };
 
 // =============================================================================
@@ -221,19 +221,19 @@ export const lightColors = {
 
 export const darkColors = {
   // =============================================================================
-  // PRIMARY BRAND COLORS (darker versions for dark mode)
+  // PRIMARY BRAND COLORS - Warm Orange & Harmony Bloom (Dark Mode)
   // =============================================================================
-  primary: '#60A5FA',          // Lighter blue for dark backgrounds
-  primaryLight: '#93C5FD',
-  primaryDark: '#3B82F6',
+  primary: '#FF8C42',          // Warm Orange for dark backgrounds
+  primaryLight: '#FFA07A',     // Light Salmon
+  primaryDark: '#FF6B35',      // Vibrant Orange
 
-  secondary: '#A78BFA',        // Lighter purple for dark backgrounds
-  secondaryLight: '#C4B5FD',
-  secondaryDark: '#8B5CF6',
+  secondary: '#FFCC99',        // Light Peach for dark backgrounds
+  secondaryLight: '#FFD4A3',   // Warm Beige
+  secondaryDark: '#FFB88C',    // Soft Peach
 
-  accent: '#FBBF24',           // Lighter amber for dark backgrounds
-  accentLight: '#FCD34D',
-  accentDark: '#F59E0B',
+  accent: '#FFB6C1',           // Light Pink (Bloom) for dark backgrounds
+  accentLight: '#FFA07A',      // Light Salmon
+  accentDark: '#FF8C69',       // Salmon
 
   // =============================================================================
   // MATERIAL DESIGN 3 - ON COLORS (Dark mode text colors)
@@ -251,10 +251,10 @@ export const darkColors = {
   // =============================================================================
   // MATERIAL DESIGN 3 - CONTAINER COLORS (Dark mode containers)
   // =============================================================================
-  primaryContainer: '#1E3A8A',    // Dark blue container
-  onPrimaryContainer: '#DBEAFE',  // Light text on dark primary container
-  secondaryContainer: '#4C1D95',  // Dark purple container
-  onSecondaryContainer: '#E0E7FF', // Light text on dark secondary container
+  primaryContainer: '#CC4A1F',    // Dark orange container
+  onPrimaryContainer: '#FFE4CD',  // Light text on dark primary container
+  secondaryContainer: '#CC8C5F',  // Dark peach container
+  onSecondaryContainer: '#FFF8DC', // Light text on dark secondary container
   errorContainer: '#7F1D1D',      // Dark red container
   onErrorContainer: '#FEE2E2',    // Light text on dark error container
 
@@ -280,9 +280,9 @@ export const darkColors = {
   warningLight: '#FBBF24',
   warningDark: '#D97706',
 
-  info: '#3B82F6',
-  infoLight: '#60A5FA',
-  infoDark: '#2563EB',
+  info: '#FF8C42',              // Warm Orange for info (dark mode)
+  infoLight: '#FFA07A',         // Light Salmon
+  infoDark: '#FF6347',          // Tomato
 
   // =============================================================================
   // SEMANTIC CONTAINER COLORS (Same as light mode for type consistency)
@@ -291,8 +291,8 @@ export const darkColors = {
   onSuccessContainer: '#065F46',      // Same as light mode for type consistency
   warningContainer: '#FEF3C7',        // Same as light mode for type consistency
   onWarningContainer: '#92400E',      // Same as light mode for type consistency
-  infoContainer: '#DBEAFE',           // Same as light mode for type consistency
-  onInfoContainer: '#1E40AF',         // Same as light mode for type consistency
+  infoContainer: '#FFE4CD',           // Light orange container
+  onInfoContainer: '#CC4A1F',         // Text on info container
 
   // =============================================================================
   // GRAYSCALE PALETTE (Same as light mode for type consistency)
@@ -340,8 +340,8 @@ export const darkColors = {
   // =============================================================================
   // COMPONENT-SPECIFIC COLORS (dark mode specific)
   // =============================================================================
-  buttonPrimary: '#60A5FA',          // Lighter blue for dark mode
-  buttonSecondary: '#A78BFA',        // Lighter purple for dark mode
+  buttonPrimary: '#FF8C42',          // Warm Orange for dark mode
+  buttonSecondary: '#FFCC99',        // Light Peach for dark mode
 
   inputBackground: '#1E293B',        // Dark input background
   inputBorder: '#475569',            // Subtle input border
@@ -378,7 +378,7 @@ export const darkColors = {
   textWhiteOpacity: 'rgba(255, 255, 255, 0.8)',
 
   errorBackground: 'rgba(239, 68, 68, 0.1)',
-  primaryBackground: 'rgba(99, 102, 241, 0.1)',
+  primaryBackground: 'rgba(255, 140, 66, 0.1)',  // Orange background (dark mode)
 
   cardOverlay: 'rgba(0, 0, 0, 0.15)',
 
@@ -392,9 +392,9 @@ export const darkColors = {
   // =============================================================================
 
   // =============================================================================
-  // GRADIENTS (Same as light mode for type consistency)
+  // GRADIENTS - Warm Orange Harmony (Dark Mode)
   // =============================================================================
-  gradient: ['#3B82F6', '#8B5CF6'],
+  gradient: ['#FF8C42', '#FFCC99'],  // Orange to Peach gradient
 };
 
 // =============================================================================
